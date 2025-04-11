@@ -9,8 +9,8 @@ load_dotenv()
 
 class StockGainers:
     def __init__(self, 
-                 min_price=0.9, max_price=10, 
-                 min_pct=30, max_pct=1000):
+                 min_price=0.1, max_price=10, 
+                 min_pct=10, max_pct=1000):
         self.api_key = os.getenv("FMP_KEY")
         self.url = f"https://financialmodelingprep.com/api/v3/stock_market/gainers?apikey={self.api_key}"
         self.min_price = min_price
