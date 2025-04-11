@@ -50,15 +50,15 @@ class SupportResistanceAnalyzer:
             window = np.where(volatility > 0.05, 5, 10)
             
             # 使用scipy找極值點
-            peaks, _ = find_peaks(self.df['high'], prominence=0.1)
-            valleys, _ = find_peaks(-self.df['low'], prominence=0.1)
+            peaks, _ = find_peaks(self.df['high'], prominence=0.3)
+            valleys, _ = find_peaks(-self.df['low'], prominence=0.3)
             
             resistance = self.df['high'].iloc[peaks].dropna()
             support = self.df['low'].iloc[valleys].dropna()
             
             # 合併相近水平（改用固定$0.02閾值）
-            resistance = self._cluster_levels(resistance, threshold=0.02)
-            support = self._cluster_levels(support, threshold=0.02)
+            resistance = self._cluster_levels(resistance, threshold=0.05)
+            support = self._cluster_levels(support, threshold=0.05)
             
             self.results['Pivot Points'] = {
                 'Support': support,
@@ -298,7 +298,7 @@ def create_pivot_chart(df, results):
     
     # 支撐位（藍色）
     supports = results['Pivot Points'].get('Support', [])
-    for i, level in enumerate(supports[:5]):  # 最多顯示5個
+    for i, level in enumerate(supports[:2]):  # 最多顯示5個
         fig.add_shape(
             type="line",
             x0=df.index[0], y0=level,
@@ -485,9 +485,9 @@ def analyze_stock(ticker, period='3d', interval='5m'):
 
 # 使用示例
 if __name__ == "__main__":
-    ticker = "icct" 
-    period = "3d"
-    interval = "5m"
+    ticker = "bjdx" 
+    period = "1d"
+    interval = "1m"
     
     charts, results = analyze_stock(ticker, period, interval)
     
@@ -496,8 +496,8 @@ if __name__ == "__main__":
         #charts['Fibonacci'].show()
         charts['Pivot Points'].show()
         # charts['Bollinger Bands'].show()
-        # charts['KMeans Clusters'].show()
-        # charts['Volume Profile'].show()
+        #charts['KMeans Clusters'].show()
+        #charts['Volume Profile'].show()
         
         # 打印結果（不會觸發圖表顯示）
         print("\n📊 Analysis Results:")

@@ -5,7 +5,7 @@ import pandas as pd
 import pytz
 
 # 設定股票代碼
-stock_symbol = 'AAPL'
+stock_symbol = 'bjdx'
 
 # 取得歷史數據（包含成交量）
 ticker = yf.Ticker(stock_symbol)

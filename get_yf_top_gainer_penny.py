@@ -10,7 +10,8 @@ def get_penny_stocks(price_max=5.0, count=20):
     :param count: 返回結果數量
     """
     # 使用penny_stocks篩選器，但也可以嘗試其他URL
-    url = "https://finance.yahoo.com/screener/predefined/penny_stocks"
+    #url = "https://finance.yahoo.com/screener/predefined/penny_stocks"
+    url = "https://finance.yahoo.com/research-hub/screener/most_active_penny_stocks/"
     
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
