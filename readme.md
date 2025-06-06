@@ -1,19 +1,169 @@
-# 安裝 tradebot 環境及量化交易相關庫 這篇教程將指導你如何在 conda 上創建一個名為 tradebot 的虛擬環境，並安裝一些量化交易所需的庫，包括 uv, yfinance, pandas, matplotlib, numpy 等。 ## 步驟 1: 安裝 Conda 首先，請確保你已經安裝了 Anaconda 或 Miniconda。如果你還沒有安裝，可以前往官方網站下載： - Anaconda 安裝頁面 - Miniconda 安裝頁面 安裝後，請打開命令行（Terminal 或 CMD），並檢查 conda 是否正確安裝： 
-bash bash CopyEdit conda --version
- ## 步驟 2: 創建虛擬環境 tradebot 打開終端機或命令提示符，並執行以下命令來創建一個新的虛擬環境： 
-bash bash CopyEdit conda create --name tradebot python=3.9
- 這會創建一個名為 tradebot 的虛擬環境，並安裝 Python 3.9。如果你需要其他版本的 Python，可以將 python=3.9 改為你需要的版本。 ## 步驟 3: 啟動虛擬環境 創建環境後，激活它： 
-bash bash CopyEdit conda activate tradebot
- ## 步驟 4: 安裝所需的庫 ### 4.1 安裝 uv 和 uv pip 库 安裝 uv 及 uv pip： 
-bash bash CopyEdit pip install uv pip install uv pip
- ### 4.2 安裝量化交易所需的庫 以下是安裝所需庫的命令。你可以直接使用 pip 安裝： 
-bash bash CopyEdit pip install yfinance pandas numpy matplotlib
- 這些庫涵蓋了數據獲取（yfinance）、數據處理（pandas）、數學計算（numpy）和可視化（matplotlib）等基本需求。 ### 4.3 安裝量化交易相關庫 如果你有特定的需求，還可以安裝更多量化交易相關的庫。以下是一些常用的庫： 
-bash bash CopyEdit pip install ta-lib pip install backtrader pip install zipline pip install pytorch
- ### 4.4 使用 requirements.txt 安裝 如果你有一個 requirements.txt 文件，包含所有需要的庫，則可以使用以下命令一鍵安裝： 
-bash bash CopyEdit pip install -r requirements.txt
- requirements.txt 文件範例如下： 
-vbnet CopyEdit yfinance pandas numpy matplotlib ta-lib backtrader zipline
- ## 步驟 5: 確認安裝 完成庫的安裝後，確保所有庫都已正確安裝。可以通過以下命令檢查庫是否安裝成功： 
-bash bash CopyEdit pip list
- 這會顯示你當前虛擬環境中安裝的所有庫。 ## 步驟 6: 開始使用 你現在可以開始編寫你的量化交易策略或其他相關工作了。將所有代碼保存在你的專案資料夾中，並在虛擬環境中運行。# pennystock_trade_tools 6:00 - 9:30 am EST get top gainers fmp Get News Get SEC Filings
+# Pennystock Trade Tools 股票交易工具
+
+[English](#english) | [繁體中文](#traditional-chinese)
+
+<a name="traditional-chinese"></a>
+## 繁體中文
+
+### 簡介
+這是一個強大的股票交易工具集，專門用於分析和監控便士股（Penny Stocks）。該工具集整合了多個數據源，包括 Yahoo Finance、Finnhub、Financial Modeling Prep (FMP) 和 Alpha Vantage，提供全面的市場數據分析功能。
+
+### 主要功能
+- **漲幅股票追蹤**
+  - 多數據源支持（Yahoo Finance、Finnhub、FMP、Alpha Vantage）
+  - 自動篩選和排序功能
+  - 實時價格監控
+  
+- **新聞監控**
+  - 整合 Financial Modeling Prep 新聞源
+  - 即時市場新聞更新
+  
+- **SEC 文件監控**
+  - 自動獲取 SEC 申報文件
+  - 支持多種文件類型分析
+  - HTML 報告生成
+
+- **圖表分析**
+  - 技術分析圖表生成
+  - 多時間週期支持
+  - 自定義指標支持
+
+### 項目結構
+```
+├── get_gainer/          # 漲幅股票追蹤模組
+├── get_news/            # 新聞監控模組
+├── get_sec_filings/     # SEC文件監控模組
+├── get_charts/          # 圖表生成模組
+├── get_price/           # 價格監控模組
+└── utilities/           # 通用工具函數
+```
+
+### 安裝方式
+```bash
+# 克隆專案
+git clone https://github.com/yourusername/pennystock_trade_tools.git
+
+# 進入專案目錄
+cd pennystock_trade_tools
+
+# 安裝依賴
+pip install -r requirements.txt
+
+# 設置環境變量
+cp .env.example .env
+# 編輯 .env 文件，添加您的 API 密鑰
+```
+
+### 使用說明
+1. 設置 API 密鑰：
+   - Finnhub API 密鑰
+   - Alpha Vantage API 密鑰
+   - Financial Modeling Prep API 密鑰
+
+2. 運行漲幅股票追蹤：
+   ```bash
+   python get_gainer/get_yf_top_gainer_penny.py
+   ```
+
+3. 獲取新聞更新：
+   ```bash
+   python get_news/get_news_fmp.py
+   ```
+
+4. 監控 SEC 文件：
+   ```bash
+   python get_sec_filings/get_sec_filings_3.py
+   ```
+
+### 注意事項
+- 請確保已安裝 Chrome 瀏覽器（用於 Selenium 操作）
+- 所有 API 密鑰都應該保存在 .env 文件中
+- 建議使用虛擬環境運行項目
+
+---
+
+<a name="english"></a>
+## English
+
+### Introduction
+This is a powerful stock trading toolkit specifically designed for analyzing and monitoring penny stocks. The toolkit integrates multiple data sources including Yahoo Finance, Finnhub, Financial Modeling Prep (FMP), and Alpha Vantage to provide comprehensive market data analysis capabilities.
+
+### Key Features
+- **Top Gainers Tracking**
+  - Multiple data source support (Yahoo Finance, Finnhub, FMP, Alpha Vantage)
+  - Automatic filtering and sorting
+  - Real-time price monitoring
+  
+- **News Monitoring**
+  - Financial Modeling Prep news integration
+  - Real-time market news updates
+  
+- **SEC Filings Monitor**
+  - Automatic SEC filing retrieval
+  - Support for multiple document types
+  - HTML report generation
+
+- **Chart Analysis**
+  - Technical analysis chart generation
+  - Multiple timeframe support
+  - Custom indicator support
+
+### Project Structure
+```
+├── get_gainer/          # Top gainers tracking module
+├── get_news/            # News monitoring module
+├── get_sec_filings/     # SEC filings monitoring module
+├── get_charts/          # Chart generation module
+├── get_price/           # Price monitoring module
+└── utilities/           # Common utility functions
+```
+
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/pennystock_trade_tools.git
+
+# Navigate to project directory
+cd pennystock_trade_tools
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Setup environment variables
+cp .env.example .env
+# Edit .env file and add your API keys
+```
+
+### Usage
+1. Setup API Keys:
+   - Finnhub API key
+   - Alpha Vantage API key
+   - Financial Modeling Prep API key
+
+2. Run Top Gainers Tracking:
+   ```bash
+   python get_gainer/get_yf_top_gainer_penny.py
+   ```
+
+3. Get News Updates:
+   ```bash
+   python get_news/get_news_fmp.py
+   ```
+
+4. Monitor SEC Filings:
+   ```bash
+   python get_sec_filings/get_sec_filings_3.py
+   ```
+
+### Important Notes
+- Ensure Chrome browser is installed (required for Selenium operations)
+- All API keys should be stored in the .env file
+- Recommended to run the project in a virtual environment
+
+---
+
+## License
+MIT License
+
+## Contact
+If you have any questions or suggestions, please feel free to open an issue or contact us directly.

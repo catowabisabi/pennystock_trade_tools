@@ -1,16 +1,9 @@
-# Byte-compiled / optimized / DLL files
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
-env/
-venv/
-ENV/
 build/
 develop-eggs/
 dist/
@@ -22,43 +15,42 @@ lib64/
 parts/
 sdist/
 var/
+wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 
-# PyInstaller
-*.manifest
-*.spec
+# Virtual Environment
+venv/
+env/
+ENV/
+.env
 
-# VSCode settings
+# IDE
+.idea/
 .vscode/
+*.swp
+*.swo
+
+# Project specific
+http_cache.sqlite
+*.log
+chromedriver*
+geckodriver*
+*.bat
+sec_report.html
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb
 
-# macOS
-.DS_Store
-
-# Logs
-*.log
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
+# Cache
+.cache/
 .pytest_cache/
+.coverage
+htmlcov/
 
-# dotenv
-.env
-.env.*
-
-# mypy
-.mypy_cache/
-
-# Profiling data
-.prof
+# OS specific
+.DS_Store
+Thumbs.db
+desktop.ini
